@@ -1,9 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfieAPokemon.API.UI", "SelfieAPokemon.API.UI\SelfieAPokemon.API.UI.csproj", "{C6CE5C69-764B-45DC-B5FD-BD93D272DEA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfieAPokemon.API.UI", "SelfieAPokemon.API.UI\SelfieAPokemon.API.UI.csproj", "{C6CE5C69-764B-45DC-B5FD-BD93D272DEA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5378C19A-C878-48CA-96A3-1F36A6BA11DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWebApi", "TestWebApi\TestWebApi.csproj", "{3DE2CACE-40BD-4980-8F4D-9C2185FD83E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{755D459E-FC55-4B24-BFDA-E752513DF2BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfieAPokemon.Core.Domain", "SelfieAPokemon.Core.Domain\SelfieAPokemon.Core.Domain.csproj", "{7E3736D0-6555-4CAC-B347-23F30776B976}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfieAPokemon.Core.Infrastructures", "SelfieAPokemon.Core.Infrastructures\SelfieAPokemon.Core.Infrastructures.csproj", "{AD048008-3E67-4EFC-90AB-77E966B85450}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,26 @@ Global
 		{C6CE5C69-764B-45DC-B5FD-BD93D272DEA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6CE5C69-764B-45DC-B5FD-BD93D272DEA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6CE5C69-764B-45DC-B5FD-BD93D272DEA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DE2CACE-40BD-4980-8F4D-9C2185FD83E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DE2CACE-40BD-4980-8F4D-9C2185FD83E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DE2CACE-40BD-4980-8F4D-9C2185FD83E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DE2CACE-40BD-4980-8F4D-9C2185FD83E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E3736D0-6555-4CAC-B347-23F30776B976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3736D0-6555-4CAC-B347-23F30776B976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3736D0-6555-4CAC-B347-23F30776B976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3736D0-6555-4CAC-B347-23F30776B976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD048008-3E67-4EFC-90AB-77E966B85450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD048008-3E67-4EFC-90AB-77E966B85450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD048008-3E67-4EFC-90AB-77E966B85450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD048008-3E67-4EFC-90AB-77E966B85450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DE2CACE-40BD-4980-8F4D-9C2185FD83E2} = {5378C19A-C878-48CA-96A3-1F36A6BA11DB}
+		{7E3736D0-6555-4CAC-B347-23F30776B976} = {755D459E-FC55-4B24-BFDA-E752513DF2BF}
+		{AD048008-3E67-4EFC-90AB-77E966B85450} = {755D459E-FC55-4B24-BFDA-E752513DF2BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE21293F-649C-4DC0-B077-2A16164EF887}
