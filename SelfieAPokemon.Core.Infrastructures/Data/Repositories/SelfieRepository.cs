@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SelfieAPokemon.Core.Domain;
 using SelfieAPokemon.Core.Domain.Interfaces;
+using SelfieAPokemon.Core.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace SelfieAPokemon.Core.Infrastructures.Data.Repositories
         {
             this._context = context;
         }
+
         #endregion
         public async Task<Selfie> Get(int Id)
         {
@@ -29,5 +31,6 @@ namespace SelfieAPokemon.Core.Infrastructures.Data.Repositories
             return await this._context.Selfie
                 .Include(s => s.Pokemon).ToListAsync();
         }
+        public IUnitOfWork UnitOfWork => this._context;
     }
 }

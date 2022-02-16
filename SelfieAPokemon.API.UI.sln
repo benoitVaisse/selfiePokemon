@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{755D459E-F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfieAPokemon.Core.Domain", "SelfieAPokemon.Core.Domain\SelfieAPokemon.Core.Domain.csproj", "{7E3736D0-6555-4CAC-B347-23F30776B976}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfieAPokemon.Core.Infrastructures", "SelfieAPokemon.Core.Infrastructures\SelfieAPokemon.Core.Infrastructures.csproj", "{AD048008-3E67-4EFC-90AB-77E966B85450}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfieAPokemon.Core.Infrastructures", "SelfieAPokemon.Core.Infrastructures\SelfieAPokemon.Core.Infrastructures.csproj", "{AD048008-3E67-4EFC-90AB-77E966B85450}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfieAPokemon.Core.Framework", "SelfieAPokemon.Core.Framework\SelfieAPokemon.Core.Framework.csproj", "{73757568-C867-4495-9980-F5A1676AA289}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{AD048008-3E67-4EFC-90AB-77E966B85450}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD048008-3E67-4EFC-90AB-77E966B85450}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD048008-3E67-4EFC-90AB-77E966B85450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73757568-C867-4495-9980-F5A1676AA289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73757568-C867-4495-9980-F5A1676AA289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73757568-C867-4495-9980-F5A1676AA289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73757568-C867-4495-9980-F5A1676AA289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{3DE2CACE-40BD-4980-8F4D-9C2185FD83E2} = {5378C19A-C878-48CA-96A3-1F36A6BA11DB}
 		{7E3736D0-6555-4CAC-B347-23F30776B976} = {755D459E-FC55-4B24-BFDA-E752513DF2BF}
 		{AD048008-3E67-4EFC-90AB-77E966B85450} = {755D459E-FC55-4B24-BFDA-E752513DF2BF}
+		{73757568-C867-4495-9980-F5A1676AA289} = {755D459E-FC55-4B24-BFDA-E752513DF2BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE21293F-649C-4DC0-B077-2A16164EF887}
