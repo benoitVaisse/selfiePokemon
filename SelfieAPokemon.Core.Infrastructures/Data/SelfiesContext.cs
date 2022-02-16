@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SelfieAPokemon.Core.Domain;
+using SelfieAPokemon.Core.Framework;
 using SelfieAPokemon.Core.Infrastructures.Data.Configurations;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SelfieAPokemon.Core.Infrastructures.Data
 {
-    public class SelfiesContext: DbContext
+    public class SelfiesContext: DbContext, IUnitOfWork
     {
         public SelfiesContext(DbContextOptions options):base(options)
         {

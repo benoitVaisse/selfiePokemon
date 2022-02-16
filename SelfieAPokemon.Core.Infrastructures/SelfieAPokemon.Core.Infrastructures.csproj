@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SelfieAPokemon.Core.Domain\SelfieAPokemon.Core.Domain.csproj" />
+    <ProjectReference Include="..\SelfieAPokemon.Core.Framework\SelfieAPokemon.Core.Framework.csproj" />
   </ItemGroup>
 
 </Project>

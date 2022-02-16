@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SelfieAPokemon.Core.Domain;
+using SelfieAPokemon.Core.Domain.Interfaces;
 using SelfieAPokemon.Core.Infrastructures.Data;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,11 @@ namespace SelfieAPokemon.API.UI.Controllers
     [Route("api/v1/[controller]")]
     public class SelfieController : ControllerBase
     {
-        private readonly SelfiesContext _context;
+        private readonly ISelfieRepository _selfieRepository;
 
-        public SelfieController(SelfiesContext context)
+        public SelfieController(ISelfieRepository selfieRepository)
         {
-            this._context = context;
+            this._selfieRepository = selfieRepository;
         }
 
 
@@ -28,8 +29,7 @@ namespace SelfieAPokemon.API.UI.Controllers
         public async Task<ActionResult<List<Selfie>>> TestAMoi()
         {
             //return Ok(Enumerable.Range(1, 10).Select(i => new Selfie() { Id =  Guid.NewGuid() }).ToList());
-            List<Selfie> selfies = await this._context.Selfie
-                .Include(s=>s.Pokemon).ToListAsync();
+            ICollection<Selfie> selfies = await this._selfieRepository.GetAll();
 
             return Ok(selfies);
         }
