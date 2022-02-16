@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SelfieAPokemon.Core.Application\SelfieAPokemon.Core.Application.csproj" />
     <ProjectReference Include="..\SelfieAPokemon.Core.Domain\SelfieAPokemon.Core.Domain.csproj" />
     <ProjectReference Include="..\SelfieAPokemon.Core.Infrastructures\SelfieAPokemon.Core.Infrastructures.csproj" />
   </ItemGroup>

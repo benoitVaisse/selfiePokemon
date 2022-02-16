@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace SelfieAPokemon.Core.Domain.Interfaces
 {
-    public interface ISelfieRepository: IRepostoryBaseDomain<Selfie>
+    public interface IRepostoryBaseDomain<T>: IRepositoryBase where T : class
     {
+
+        Task<ICollection<T>> GetAll();
+
+        Task<T> Get(int Id);
+
+        Task<T> Add(T selfie);
     }
 }

@@ -19,6 +19,12 @@ namespace SelfieAPokemon.Core.Infrastructures.Data.Repositories
             this._context = context;
         }
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
+
+        public Task<Pokemon> Add(Pokemon selfie)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Pokemon> Get(int Id)
         {
             return await this._context.Pokemon.Include(p => p.Selfies ).Where(p => p.Id == Id).FirstOrDefaultAsync();

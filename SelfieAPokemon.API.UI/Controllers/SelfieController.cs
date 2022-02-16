@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SelfieAPokemon.Core.Application.Models.DTOs;
 using SelfieAPokemon.Core.Domain;
 using SelfieAPokemon.Core.Domain.Interfaces;
 using SelfieAPokemon.Core.Infrastructures.Data;
@@ -32,6 +33,24 @@ namespace SelfieAPokemon.API.UI.Controllers
             ICollection<Selfie> selfies = await this._selfieRepository.GetAll();
 
             return Ok(selfies);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddOne(SelfieDto selfieDto)
+        {
+            IActionResult result = BadRequest();
+            Selfie addSelfie = await this._selfieRepository.Add(new Selfie()
+            {
+                ImagePath = selfieDto.ImagePath,
+                Title = selfieDto.Title
+            });
+            this._selfieRepository.UnitOfWork.SaveChanges();
+            if(addSelfie.Id > 0)
+            {
+                selfieDto.Id = addSelfie.Id;
+                result = Ok(selfieDto);
+            }
+            return result;
         }
         #endregion
 

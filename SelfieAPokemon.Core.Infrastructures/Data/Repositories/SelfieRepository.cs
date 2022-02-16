@@ -31,6 +31,13 @@ namespace SelfieAPokemon.Core.Infrastructures.Data.Repositories
             return await this._context.Selfie
                 .Include(s => s.Pokemon).ToListAsync();
         }
+
+        public async Task<Selfie> Add(Selfie selfie)
+        {
+            Selfie entity  =  (await this._context.Selfie.AddAsync(selfie)).Entity;
+            return entity;
+        }
+
         public IUnitOfWork UnitOfWork => this._context;
     }
 }

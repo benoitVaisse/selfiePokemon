@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace SelfieAPokemon.Core.Framework
 {
-    public interface IRepositoryBase<T> where T : class
+    public interface IRepositoryBase
     {
-        Task<ICollection<T>> GetAll();
-
-        Task<T> Get(int Id);
 
         IUnitOfWork UnitOfWork { get; }
 

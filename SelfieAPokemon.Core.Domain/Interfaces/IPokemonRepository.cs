@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SelfieAPokemon.Core.Domain.Interfaces
 {
-    public interface IPokemonRepository : IRepositoryBase<Pokemon>
+    public interface IPokemonRepository : IRepostoryBaseDomain<Pokemon>
     {
     }
 }
