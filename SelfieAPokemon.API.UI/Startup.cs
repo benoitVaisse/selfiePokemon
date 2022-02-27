@@ -37,6 +37,7 @@ namespace SelfieAPokemon.API.UI
 
 
             services.AddControllers();
+            services.AddCustomCors(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SelfieAPokemon.API.UI", Version = "v1" });
@@ -56,6 +57,7 @@ namespace SelfieAPokemon.API.UI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(Configuration.GetSection("Security:CorsPolicy").Value);
 
             app.UseAuthorization();
 

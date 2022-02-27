@@ -35,6 +35,25 @@ namespace SelfieAPokemon.API.UI.ExtensionMethods
             return services;
         }
 
+        /// <summary>
+        /// Add Cors 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddCustomCors(this IServiceCollection services, IConfiguration config)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(config.GetSection("Security:CorsPolicy").Value, builder =>
+                {
+                    builder.WithOrigins("*")
+                            .WithMethods("*")
+                            .WithHeaders("*");
+                });
+            });
+            return services;
+        }
+
 
     }
 }
