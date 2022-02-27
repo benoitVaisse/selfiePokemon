@@ -12,8 +12,8 @@ namespace SelfieAPokemon.Core.Domain.Interfaces
 
         Task<ICollection<T>> GetAll();
 
-        Task<T> Get(int Id);
+        Task<T> Get(Guid Id);
 
-        Task<T> Add(T selfie);
+        Task<T> Add(T entity);
     }
 }

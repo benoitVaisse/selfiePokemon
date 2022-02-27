@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace SelfieAPokemon.Core.Domain
@@ -9,14 +10,14 @@ namespace SelfieAPokemon.Core.Domain
     {
         #region Properties
 
-        //[Key]
-        //public Guid Id { get; set; }
-
-
         [Key]
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
-        [JsonIgnore] // ou alors convertir en dto
+        public string Name { get; set; }
+        //[Key]
+        //public int Id { get; set; }
+
         public List<Selfie> Selfies { get; set; }        
         
         #endregion

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SelfieAPokemon.Core.Application.Services;
 using SelfieAPokemon.Core.Domain.Interfaces;
 using SelfieAPokemon.Core.Infrastructures.Data;
 using SelfieAPokemon.Core.Infrastructures.Data.Repositories;
@@ -16,7 +17,9 @@ namespace SelfieAPokemon.API.UI.ExtensionMethods
 
         public static IServiceCollection SetDependencyInjection(this IServiceCollection services)
         {
+            services.AddScoped<IPokemonRepository, PokemonRepository>();
             services.AddScoped<ISelfieRepository, SelfieRepository>();
+            services.AddScoped<IRegisterImageToServerService, RegisterImageToServerService>();
             return services;
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace SelfieAPokemon.Core.Application.Models.DTOs
 {
-    public class SelfieDto
+    public class SelfieSaveDto
     {
         #region Properties
-        public Guid Id{ get; set; }
-        public string Title{ get; set; }
-        public string ImagePath{ get; set; }
+        public string Title { get; set; }
+        public IFormFile ImagePath { get; set; }
 
-        public PokemonDto PokemonDto { get; set; }
+        public Guid PokemonId { get; set; }
         #endregion
     }
 }

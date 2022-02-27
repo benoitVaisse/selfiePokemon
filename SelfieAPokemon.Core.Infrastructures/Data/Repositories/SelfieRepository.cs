@@ -21,7 +21,7 @@ namespace SelfieAPokemon.Core.Infrastructures.Data.Repositories
         }
 
         #endregion
-        public async Task<Selfie> Get(int Id)
+        public async Task<Selfie> Get(Guid Id)
         {
             return await  this._context.Selfie.Include(s => s.Pokemon).Where(s => s.Id == Id).FirstOrDefaultAsync();
         }

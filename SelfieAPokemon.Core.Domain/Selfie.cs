@@ -11,13 +11,14 @@ namespace SelfieAPokemon.Core.Domain
     public class Selfie
     {
         #region properties
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //[Key]
-        //public Guid Id { get; set; } 
-
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
+        //[Key]
+        //public int Id { get; set; }
+
+        public Guid PokemonId { get; set; }
         public Pokemon Pokemon {get;set;}
 
         public string ImagePath { get; set; }
