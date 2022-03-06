@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SelfieAPokemon.Core.Application.Services;
+using SelfieAPokemon.Core.Application.Services.Interfaces;
 using SelfieAPokemon.Core.Domain;
 using SelfieAPokemon.Core.Domain.Interfaces;
 using SelfieAPokemon.Core.Infrastructures.Data;
@@ -23,6 +24,7 @@ namespace SelfieAPokemon.API.UI.ExtensionMethods
             services.AddScoped<IPokemonRepository, PokemonRepository>();
             services.AddScoped<ISelfieRepository, SelfieRepository>();
             services.AddScoped<IRegisterImageToServerService, RegisterImageToServerService>();
+            services.AddScoped<IJwtTokenService, JwtTokenService>();
             return services;
         }
 
@@ -81,10 +83,12 @@ namespace SelfieAPokemon.API.UI.ExtensionMethods
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
                     //claims enregistré
-
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(config["Security:JwtToken"])),
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateActor = false,
                     ValidateLifetime = true,
                     // clef d'enregistrement
-                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(config["Security:JwtToken"])),
                 };
                 
             });

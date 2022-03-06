@@ -8,5 +8,9 @@ namespace SelfieAPokemon.Core.Application.Models.DTOs
 {
     public class BadRequestDto
     {
+        public string Title { get; set; }
+        public int status { get; set; }
+
+        public List<string> Errors { get; set; }
     }
 }

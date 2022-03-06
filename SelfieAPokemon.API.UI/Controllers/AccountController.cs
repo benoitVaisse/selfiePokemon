@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SelfieAPokemon.Core.Application.Models.DTOs;
 using SelfieAPokemon.Core.Application.Models.ViewModel.User;
+using SelfieAPokemon.Core.Application.Services.Interfaces;
 using SelfieAPokemon.Core.Domain;
 using System;
 using System.Collections.Generic;
@@ -18,28 +19,52 @@ namespace SelfieAPokemon.API.UI.Controllers
 
         #region properties
         private readonly UserManager<User> _userManager;
+        private readonly IJwtTokenService _jwtTokenService;
         #endregion
         #region constructeur
 
-        public AccountController(UserManager<User> userManager)
+        public AccountController(UserManager<User> userManager, IJwtTokenService jwtTokenService)
         {
             this._userManager = userManager;
+            this._jwtTokenService = jwtTokenService;
         }
         #endregion
 
         #region public methods
 
         [HttpPost]
+        [Route("sign-in")]
+        public async Task<ActionResult<UserDto>> SignIn([FromBody] UserLoginViewModel model)
+        {
+            var user = await this._userManager.FindByEmailAsync(model.Email);
+            if(user != null)
+            {
+                var userAuth = await this._userManager.CheckPasswordAsync(user, model.Password);
+                if (userAuth)
+                {
+                    return Ok(new UserDto()
+                    {
+                        Email = user.Email,
+                        Name = user.UserName,
+                        Token = this._jwtTokenService.GenerateJwtToken(user)
+                    });
+                }
+            }
+            return BadRequest();
+        }
+
+
+        [HttpPost]
         [Route("Sign-up")]
         public async Task<ActionResult<UserDto>> SignUp([FromBody] UserRegisterViewModel model)
         {
             string name = !string.IsNullOrEmpty(model.Name) ? model.Name : model.Email;
-            var tt = await this._userManager.CreateAsync(new Core.Domain.User() { 
+            var userCreated = await this._userManager.CreateAsync(new Core.Domain.User() { 
                     Email = model.Email, UserName =name
                 }, model.Password );
-            if (!tt.Succeeded)
+            if (!userCreated.Succeeded)
             {
-                return BadRequest(new { errors = tt.Errors.Select(e => e.Description) });
+                return BadRequest(new { errors = userCreated.Errors.Select(e => e.Description) });
             }
 
 

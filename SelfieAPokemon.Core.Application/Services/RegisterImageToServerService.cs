@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using SelfieAPokemon.Core.Application.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
