@@ -32,12 +32,13 @@ namespace SelfieAPokemon.API.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.SetDbContext(Configuration);
-
+            services.AddCustomIdentity(Configuration);
             services.SetDependencyInjection();
 
 
             services.AddControllers();
             services.AddCustomCors(Configuration);
+            services.AddCustomJWT(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SelfieAPokemon.API.UI", Version = "v1" });
@@ -59,6 +60,7 @@ namespace SelfieAPokemon.API.UI
             app.UseRouting();
             app.UseCors(Configuration.GetSection("Security:CorsPolicy").Value);
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -1,7 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using SelfieAPokemon.Core.Application.Services;
+using SelfieAPokemon.Core.Application.Services.Interfaces;
+using SelfieAPokemon.Core.Domain;
 using SelfieAPokemon.Core.Domain.Interfaces;
 using SelfieAPokemon.Core.Infrastructures.Data;
 using SelfieAPokemon.Core.Infrastructures.Data.Repositories;
@@ -20,6 +24,7 @@ namespace SelfieAPokemon.API.UI.ExtensionMethods
             services.AddScoped<IPokemonRepository, PokemonRepository>();
             services.AddScoped<ISelfieRepository, SelfieRepository>();
             services.AddScoped<IRegisterImageToServerService, RegisterImageToServerService>();
+            services.AddScoped<IJwtTokenService, JwtTokenService>();
             return services;
         }
 
@@ -32,6 +37,17 @@ namespace SelfieAPokemon.API.UI.ExtensionMethods
                 });
             });
 
+            return services;
+        }
+
+        public static IServiceCollection AddCustomIdentity(this IServiceCollection services, IConfiguration config)
+        {
+            services.AddDefaultIdentity<User>(options => {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+
+                options.SignIn.RequireConfirmedPhoneNumber = false;
+            }).AddEntityFrameworkStores<SelfiesContext>();
             return services;
         }
 
@@ -51,6 +67,33 @@ namespace SelfieAPokemon.API.UI.ExtensionMethods
                             .WithHeaders("*");
                 });
             });
+            return services;
+        }
+
+        public static IServiceCollection AddCustomJWT(this IServiceCollection services, IConfiguration config)
+        {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options => {
+                
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    //claims enregistré
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(config["Security:JwtToken"])),
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateActor = false,
+                    ValidateLifetime = true,
+                    // clef d'enregistrement
+                };
+                
+            });
+
+
             return services;
         }
 

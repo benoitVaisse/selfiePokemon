@@ -23,7 +23,7 @@ namespace SelfieAPokemon.API.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<PokemonDto>> AddPokemon([FromForm]PokemonDto dto)
+        public async Task<ActionResult<PokemonDto>> AddPokemon([FromBody]PokemonDto dto)
         {
             ActionResult result = BadRequest();
             Pokemon addedPokemon = await this._pokemonRepository.Add(dto.MapDtoToEntityRegister());

@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SelfieAPokemon.Core.Application.Mappers;
 using SelfieAPokemon.Core.Application.Models.DTOs;
 using SelfieAPokemon.Core.Application.Services;
+using SelfieAPokemon.Core.Application.Services.Interfaces;
 using SelfieAPokemon.Core.Domain;
 using SelfieAPokemon.Core.Domain.Interfaces;
 using SelfieAPokemon.Core.Infrastructures.Data;
@@ -18,6 +21,7 @@ namespace SelfieAPokemon.API.UI.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class SelfieController : ControllerBase
     {
         private readonly IRegisterImageToServerService _registerImageToServerService;
